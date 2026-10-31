@@ -12,10 +12,14 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Configure Android SDK tools
+      - name: Install Android command line tools
         run: |
-          echo "/usr/local/lib/android/sdk/cmdline-tools/16.0/bin" >> "$GITHUB_PATH"
-          ls -l /usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager
+          mkdir -p "$HOME/android-sdk/cmdline-tools"
+          curl -fL --retry 3 -o /tmp/cmdline.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip -q /tmp/cmdline.zip -d /tmp/android-cli
+          mv /tmp/android-cli/cmdline-tools "$HOME/android-sdk/cmdline-tools/latest"
+          echo "ANDROID_HOME=$HOME/android-sdk" >> "$GITHUB_ENV"
+          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
