@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "name": "မိုးကုတ်ဆရာတော်ဘုရားကြီး ဦးဝိမလ",
+    "topic": "ပဋိစ္စသမုပ္ပါဒ်၊ ဝိပဿနာ အလုပ်ပေး",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/MogokSayadaw-mp3.htm"
+  },
+  {
+    "id": 2,
+    "name": "မဟာစည်ဆရာတော်ဘုရားကြီး ဦးသောဘန",
+    "topic": "သတိပဋ္ဌာန်၊ ဝိပဿနာ",
+    "school": "မဟာစည်နည်း",
+    "source_url": "https://www.dhammadownload.com/Mahasi-Sayadaw-U-Sobhana-Mahathera-mp3.htm"
+  },
+  {
+    "id": 3,
+    "name": "မင်းကွန်းဆရာတော်ဘုရားကြီး ဦးဝိစိတ္တသာရာဘိဝံသ",
+    "topic": "ပဋ္ဌာန်းအမွှန်းပါဠိ၊ ပရိတ်၊ သစ္စာလေးပါး",
+    "school": "ပါဠိ၊ သုတ္တန်",
+    "source_url": "https://www.dhammadownload.com/MinGunSayaDaw-mp3.htm"
+  },
+  {
+    "id": 4,
+    "name": "ပါမောက္ခချုပ်ဆရာတော် ဒေါက်တာ နန္ဒမာလာဘိဝံသ",
+    "topic": "သတိပဋ္ဌာန်၊ အဘိဓမ္မာ",
+    "school": "အဘိဓမ္မာ",
+    "source_url": "https://www.dhammadownload.com/Dr-Nandamalabhivamsa-mp3-myanmar.htm"
+  },
+  {
+    "id": 5,
+    "name": "သီတဂူဆရာတော် ဦးဉာဏိဿရ",
+    "topic": "ဓမ္မသဘင်၊ ဒါနကထာ၊ သုတ္တန်",
+    "school": "သုတ္တန်၊ ဓမ္မသဘင်",
+    "source_url": "https://www.dhammadownload.com/Sayadaw-UNyanissara-mp3-myanmar.htm"
+  },
+  {
+    "id": 6,
+    "name": "ချမ်းမြေ့ဆရာတော် အရှင်ဇနကာဘိဝံသ",
+    "topic": "ဝိပဿနာ၊ သတိပဋ္ဌာန်",
+    "school": "မဟာစည်နည်း",
+    "source_url": "https://www.dhammadownload.com/ChanMyaySayaDaw-Ashin-Janakabhivamsa-mp3-myanmar.htm"
+  },
+  {
+    "id": 7,
+    "name": "ဖားအောက်တောရဆရာတော် အရှင်အာစိဏ္ဏ",
+    "topic": "သမထ၊ ဝိပဿနာ",
+    "school": "ဖားအောက်နည်း",
+    "source_url": "https://www.dhammadownload.com/PaAuk-Sayadaw-mp3.htm"
+  },
+  {
+    "id": 8,
+    "name": "မိုးညှင်းဆရာတော်ဘုရားကြီး",
+    "topic": "ပဋ္ဌာန်းပစ္စည်းများ၊ ဝိပဿနာ",
+    "school": "ပဋ္ဌာန်း",
+    "source_url": "https://www.dhammadownload.com/MoeNyinSayadaw-mp3.htm"
+  },
+  {
+    "id": 9,
+    "name": "မြောက်ဦးဆရာတော် ဘဒ္ဒန္တဝါယာမိန္ဒ",
+    "topic": "ပဋ္ဌာန်း၊ ပရိတ်၊ အလုပ်ပေး",
+    "school": "တရားဒေသနာ",
+    "source_url": "https://www.dhammadownload.com/Mrauk-U-Sayadaw-WarYaMainda-mp3.htm"
+  },
+  {
+    "id": 10,
+    "name": "သဲအင်းဂူဆရာတော် ဦးဥက္ကဋ္ဌ",
+    "topic": "ဝိပဿနာ",
+    "school": "သဲအင်းဂူနည်း",
+    "source_url": "https://www.dhammadownload.com/TheeInnGuSayadaw-UOakKaHta-mp3.htm"
+  },
+  {
+    "id": 11,
+    "name": "မဟာဗောဓိမြိုင်ဆရာတော်",
+    "topic": "သစ္စာလေးပါး၊ ဝိပဿနာ",
+    "school": "တောရ",
+    "source_url": "https://www.dhammadownload.com/MahabodhiMyaing-Sayadaw-mp3.htm"
+  },
+  {
+    "id": 12,
+    "name": "အောက်စဖို့ဒ်ဆရာတော် ဒေါက်တာ ဓမ္မသာမိ",
+    "topic": "သုတ္တန်၊ ဗုဒ္ဓဓမ္မ",
+    "school": "ဗုဒ္ဓစာပေ",
+    "source_url": "https://www.dhammadownload.com/OxfordSayadaw-Dr-K-Dhammasami-mp3Inmyanmar.htm"
+  },
+  {
+    "id": 13,
+    "name": "ဆင်ဖြူကျွန်းဆရာတော် ဦးဓမ္မသာရ",
+    "topic": "ပဋိစ္စသမုပ္ပါဒ်၊ ဝိပဿနာ",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/SayaDaw-U-Dhammasara-mp3.htm"
+  },
+  {
+    "id": 14,
+    "name": "မိုးကုတ်နည်း ဆရာတော် ဦးဃောသိတ",
+    "topic": "ပဋိစ္စသမုပ္ပါဒ်၊ အလုပ်ပေး",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/SayaDaw-U-GawThiTa-mp3.htm"
+  },
+  {
+    "id": 15,
+    "name": "မိုးကုတ်နည်း ဆရာတော် ဦးဇနိတ",
+    "topic": "ဝိပဿနာ",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/SayaDaw-U-Zanita-mp3.htm"
+  },
+  {
+    "id": 16,
+    "name": "ထူးကြီးဆရာတော် ဦးဣန္ဒာဝုဓာဘိဝံသ",
+    "topic": "ဝိပဿနာ",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/HtooGyi-SayaDaw-U-EindarWudarBhivamsa-mp3.htm"
+  },
+  {
+    "id": 17,
+    "name": "ဘဒ္ဒန္တသုနန္ဒ (မိုးကုတ်မြို့ ဓမ္မရံသီဆရာတော်)",
+    "topic": "ဝိပဿနာ",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/Bhaddanta-Thunanda-mp3.htm"
+  },
+  {
+    "id": 18,
+    "name": "ဓမ္မဒူတ ဒေါက်တာ အရှင်ဆေကိန္ဒ",
+    "topic": "ဘာဝနာ၊ ဓမ္မသင်ကြားရေး",
+    "school": "ဓမ္မဒူတ",
+    "source_url": "https://www.dhammadownload.com/Dhammaduta-Ashin-SayKaneDa-mp3.htm"
+  },
+  {
+    "id": 19,
+    "name": "ပခုက္ကူဆရာတော် ဘဒ္ဒန္တဣန္ဒောဘာသ",
+    "topic": "တရားဒေသနာများ",
+    "school": "တရားဒေသနာ",
+    "source_url": "https://www.dhammadownload.com/Bhaddanta-Eindawbartha-mp3.htm"
+  },
+  {
+    "id": 20,
+    "name": "ကန်ဘဲ့ဆရာတော် ဦးအဂ္ဂဉာဏ",
+    "topic": "ဝိပဿနာ၊ ပဋိစ္စသမုပ္ပါဒ်",
+    "school": "မိုးကုတ်နည်း",
+    "source_url": "https://www.dhammadownload.com/SayaDaw-U-Agganyanna-mp3.htm"
+  },
+  {
+    "id": 21,
+    "name": "အောင်မဂ်လာဆရာတော် ဘဒ္ဒန္တရာဇိန္ဒ",
+    "topic": "ကံဖြူကံမဲ၊ ဒိဋ္ဌိ",
+    "school": "တရားဒေသနာ",
+    "source_url": "https://www.dhammadownload.com/aungmingalasayadawbhaddantarajinda-mp3.htm"
+  },
+  {
+    "id": 22,
+    "name": "ချမ်းမြေ့မြိုင်ဆရာတော် အရှင်ဣန္ဒက",
+    "topic": "သတိပဋ္ဌာန်၊ ဝေဒနာနုပဿနာ",
+    "school": "ဝိပဿနာ",
+    "source_url": "https://www.dhammadownload.com/ChanMyayMyingSayadaw-MP3InMyanmar.htm"
+  }
+]
