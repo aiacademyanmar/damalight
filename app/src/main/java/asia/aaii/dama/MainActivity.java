@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
     private LinearLayout root,center,playerBar,radioPanel,nowStatus;
     private TextView stats,progress,nowText;
     private ListView trackList;
+    private BaseAdapter trackAdapter;
     private EditText search;
     private Spinner monkSpinner,categorySpinner;
     private boolean syncing=false,playerReady=false;
@@ -135,7 +136,7 @@ public class MainActivity extends Activity {
         TextView menu=text("☰   DAMA    •    "+which,14,GOLD,true);menu.setPadding(dp(10),dp(12),dp(10),dp(12));
         center.addView(menu);menu.setOnClickListener(v->showTab("Menu"));
         TextView premium=text("✦ Premium / Account",14,GOLD,true);center.addView(premium);premium.setOnClickListener(v->startActivity(new Intent(this,PremiumActivity.class)));
-        if(!"Radio".equals(which)){radioPanel=null;stats=null;progress=null;}
+        if(!"Radio".equals(which)){radioPanel=null;stats=null;progress=null;trackList=null;trackAdapter=null;}
         if("Radio".equals(which))renderRadio();
         else if("Home".equals(which))renderHome();
         else if("Library".equals(which))renderLibrary();
@@ -317,13 +318,10 @@ public class MainActivity extends Activity {
             visible.add(t);
         }
         if(stats!=null)stats.setText("တရားတော် "+records.size()+" ခု • ရွေးထား "+visible.size()+" ခု • ဆရာတော် "+monks.size()+" ပါး");
-        radioPanel.removeAllViews();
-        if(visible.isEmpty()){
-            TextView m=text("ရှာဖွေမှုမတွေ့ပါ။ MP3 Sync လုပ်၍ စာရင်းထပ်ရယူပါ။",13,MUTED,false);radioPanel.addView(m);return;
-        }
-        // Use native ListView with bounded height so this scrolling screen stays responsive for thousands of items.
+        if(trackAdapter!=null){trackAdapter.notifyDataSetChanged();return;}
+        // Retain a single ListView and adapter while searching; do not rebuild them for every keystroke.
         trackList=new ListView(this);trackList.setBackgroundColor(BG);trackList.setDividerHeight(dp(5));trackList.setCacheColorHint(BG);
-        trackList.setAdapter(new BaseAdapter(){
+        trackAdapter=new BaseAdapter(){
             public int getCount(){return visible.size();}
             public Object getItem(int position){return visible.get(position);}
             public long getItemId(int position){return position;}
@@ -344,10 +342,14 @@ public class MainActivity extends Activity {
                 sub.setText(t.monk+" · "+t.category);
                 return row;
             }
-        });
+        };
+        trackList.setAdapter(trackAdapter);
         trackList.setOnItemClickListener((p,v,pos,id)->trackDialog(visible.get(pos)));
         // 8 visible rows at a time; list recycling keeps 1,000+ items fast.
         radioPanel.addView(trackList,lp(-1,405));
+        TextView empty=text("ရှာဖွေမှုမတွေ့ပါ။ MP3 Sync လုပ်၍ စာရင်းထပ်ရယူပါ။",13,MUTED,false);
+        radioPanel.addView(empty);
+        trackList.setEmptyView(empty);
         radioPanel.addView(gap(8));
         TextView all=text("ခေါင်းစဉ်တစ်ခုကို နှိပ်ပြီး ▶ နားထောင်နိုင်သည်။",11,MUTED,false);radioPanel.addView(all);
     }
