@@ -44,6 +44,8 @@ public class MainActivity extends Activity {
     private EditText search;
     private Spinner monkSpinner,categorySpinner;
     private boolean syncing=false,playerReady=false;
+    private final Handler searchHandler=new Handler(Looper.getMainLooper());
+    private Runnable pendingSearch;
     private MediaPlayer player;
     private Track selected;
     private String tab="Radio";
@@ -69,7 +71,7 @@ public class MainActivity extends Activity {
     @Override public void onCreate(Bundle state){
         super.onCreate(state);
         getWindow().setStatusBarColor(BG);getWindow().setNavigationBarColor(BG);
-        loadMonks();loadSeeds();loadBundledCatalog();loadCache();showTab("Radio");
+        loadMonks();loadSeeds();loadBundledCatalog();loadCache();showTab("Home");
     }
     private JSONArray assetJson(String file){
         try(InputStream f=getAssets().open(file);ByteArrayOutputStream out=new ByteArrayOutputStream()){
@@ -122,6 +124,8 @@ public class MainActivity extends Activity {
         t.setOnClickListener(v->onClick.run());return t;
     }
     private void showTab(String which){
+        if(which.equals(tab) && root!=null)return;
+        if(pendingSearch!=null){searchHandler.removeCallbacks(pendingSearch);pendingSearch=null;}
         tab=which;
         root=vertical();root.setBackgroundColor(BG);
         setContentView(root);
@@ -144,13 +148,13 @@ public class MainActivity extends Activity {
         drawPlayer();drawBottomBar();
     }
     private void hero(String title,String subtitle){
-        LinearLayout hero=vertical();hero.setPadding(dp(20),dp(26),dp(20),dp(26));
+        LinearLayout hero=vertical();hero.setPadding(dp(16),dp(14),dp(16),dp(14));
         GradientDrawable gd=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{Color.rgb(5,29,33),Color.rgb(23,80,68),Color.rgb(8,43,43)});
         gd.setCornerRadius(dp(20));gd.setStroke(dp(1),GOLD);hero.setBackground(gd);
-        TextView lotus=text("✿",42,GOLD,true);lotus.setGravity(Gravity.CENTER);hero.addView(lotus);
+        TextView lotus=text("✿",30,GOLD,true);lotus.setGravity(Gravity.CENTER);hero.addView(lotus);
         TextView h=text(title,24,GOLD,true);h.setGravity(Gravity.CENTER);hero.addView(h);
         TextView sub=text(subtitle,13,TEXT,false);sub.setGravity(Gravity.CENTER);sub.setPadding(dp(2),dp(8),dp(2),0);hero.addView(sub);
-        center.addView(hero,lp(-1,-2));center.addView(gap(18));
+        center.addView(hero,lp(-1,-2));center.addView(gap(10));
     }
     private void renderHome(){
         hero("DAMA APP", "ဓမ္မနှင့်အတူ နေ့စဉ် စိတ်အေးချမ်းမှု · Listen / Read / Watch / Worship");
@@ -164,9 +168,9 @@ public class MainActivity extends Activity {
         addBigCard("⌕  အကြောင်းအရာအားလုံး ရှာရန်", "Radio · Library · TV", "Search");
     }
     private void addBigCard(String label,String detail,String to){
-        LinearLayout card=vertical();card.setPadding(dp(16),dp(14),dp(16),dp(14));card.setBackground(bg(CARD,14,GOLD));
+        LinearLayout card=vertical();card.setPadding(dp(14),dp(10),dp(14),dp(10));card.setBackground(bg(CARD,14,GOLD));
         card.addView(text(label,18,GOLD,true));card.addView(text(detail,13,MUTED,false));
-        center.addView(card,lp(-1,-2));center.addView(gap(10));card.setOnClickListener(v->showTab(to));
+        center.addView(card,lp(-1,-2));center.addView(gap(7));card.setOnClickListener(v->showTab(to));
     }
     private void detail(String message){
         TextView v=text(message,14,TEXT,false);v.setPadding(dp(15),dp(16),dp(15),dp(16));v.setBackground(bg(CARD,12,0));
@@ -273,7 +277,12 @@ public class MainActivity extends Activity {
         radioPanel=vertical();center.addView(radioPanel);
         search.addTextChangedListener(new TextWatcher(){
             public void beforeTextChanged(CharSequence s,int st,int count,int after){};
-            public void onTextChanged(CharSequence s,int st,int before,int count){query=s.toString();filterTracks();}
+            public void onTextChanged(CharSequence s,int st,int before,int count){
+                query=s.toString();
+                if(pendingSearch!=null)searchHandler.removeCallbacks(pendingSearch);
+                pendingSearch=()->{pendingSearch=null;filterTracks();};
+                searchHandler.postDelayed(pendingSearch,180);
+            }
             public void afterTextChanged(Editable e){}
         });
         filterTracks();
@@ -319,10 +328,20 @@ public class MainActivity extends Activity {
             public Object getItem(int position){return visible.get(position);}
             public long getItemId(int position){return position;}
             public View getView(int position,View convert,ViewGroup parent){
-                LinearLayout row=vertical();row.setPadding(dp(12),dp(9),dp(12),dp(9));row.setBackground(bg(CARD,10,0));
+                LinearLayout row;
+                TextView title,sub;
+                if(convert instanceof LinearLayout && ((LinearLayout)convert).getChildCount()==2){
+                    row=(LinearLayout)convert;
+                    title=(TextView)row.getChildAt(0);
+                    sub=(TextView)row.getChildAt(1);
+                }else{
+                    row=vertical();row.setPadding(dp(12),dp(8),dp(12),dp(8));row.setBackground(bg(CARD,10,0));
+                    title=text("",14,TEXT,true);title.setMaxLines(2);row.addView(title);
+                    sub=text("",11,MUTED,false);sub.setMaxLines(1);row.addView(sub);
+                }
                 Track t=visible.get(position);
-                TextView title=text("▶   "+t.title,14,TEXT,true);title.setMaxLines(2);row.addView(title);
-                TextView sub=text(t.monk+" · "+t.category,11,MUTED,false);sub.setMaxLines(1);row.addView(sub);
+                title.setText("▶   "+t.title);
+                sub.setText(t.monk+" · "+t.category);
                 return row;
             }
         });
