@@ -13,7 +13,9 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Configure Android SDK tools
-        run: echo "$ANDROID_HOME/cmdline-tools/16.0/bin" >> "$GITHUB_PATH"
+        run: |
+          echo "/usr/local/lib/android/sdk/cmdline-tools/16.0/bin" >> "$GITHUB_PATH"
+          ls -l /usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
